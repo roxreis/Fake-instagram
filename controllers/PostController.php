@@ -35,7 +35,7 @@ class PostController {
        
         $resultado = $post->criarPost($caminhoSalvar, $descricao);
         if($resultado){
-            header('Location:/fake-instagram-POO/posts');
+            header('Location:/fakeinsta/posts');
         }else {
             echo "deu errado meu irmão";
         }
