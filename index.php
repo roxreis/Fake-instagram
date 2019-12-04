@@ -28,14 +28,25 @@
             $controller->acao($rotas);
         break;
 
-        case "login":
+        case "cadastrar-usuario":
             include "controllers/UserController.php";
             $controller = new UserController();
             $controller->acao($rotas);
         break;
 
-        case "logado":
-            include "controllers/UserController.php";
+        case "login":
+            include "controllers/LoginController.php";
             $controller = new UserController();
             $controller->acao($rotas);
-    }
+        break;
+
+        case "logado":
+            include "controllers/LoginController.php";
+            $controller = new UserController();
+            $controller->acao($rotas);
+            
+        case "logout":
+            include "controller/LoginController.php";
+            $controller = new UserController();
+            $controller->acao($rotas);       
+}

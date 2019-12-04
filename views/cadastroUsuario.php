@@ -14,7 +14,7 @@
 
         <h1>Cadastre-se</h1>
 
-        <form  action="/fakeinsta/cadastrar-usuario" method="POST" enctype="multipart/formdata" class="p-3 mb-2 bg-light" style="height:259px; width:400px;">
+        <form  action="/fakeinsta/cadastrar-usuario" method="POST" enctype="multipart/form-data" class="p-3 mb-2 bg-light" style="height:259px; width:400px;">
             <div class="form-group ">
                 <label for="name" >Nome</label>
                 <input type="text" class="form-control" name="name" placeholder="Nome e Sobrenome">

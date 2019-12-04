@@ -11,18 +11,18 @@
 <body>
 <?php include "views/includes/header.php"; ?>
     <main class="board d-flex flex-column justify-content-center align-items-center">
-    <h1>Logar!</h1></br>
-    <form  action="/fakeinsta/logado">
+    <h1>Entrar!</h1></br>
+    <form  action="/fakeinsta/logado" method="POST">
         <div class="form group">
             <label for="name">Nome</label>
-            <input type="text" name="name" id="">
+            <input type="text" name="usuario" id="">
         </div>
         <div class="form group">
             <label for="password">Senha</label>
-            <input type="password" name="password" id="">
+            <input type="password" name="senha" id="">
         </div>
         <div class="form group">
-            <button type="submit" class="btn btn-success">Logar</button>
+            <button type="submit" class="btn btn-success mb-3">Login</button>
         </div>
     </form>
     </main>
