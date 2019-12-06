@@ -1,9 +1,10 @@
 <?php
+session_start();
  
-$usuario = isset($_SESSION["user_image"])? $_SESSION:[];
+$usuarios = isset($_SESSION["user_name"]) ? $_SESSION:[];
 
  
-?>
+?> 
 
 
 <header >
@@ -11,19 +12,26 @@ $usuario = isset($_SESSION["user_image"])? $_SESSION:[];
             <a class="navbar-brand" href="posts"><img width="90" src="views/img/logo.png" alt="" srcset="">Instagram</a>
             <ul class="nav"> 
                                                       
-            <?php if(isset($usuario) && $usuario != []): ?>
-                <img style="widht:30px; height:30px;"src="<?=$usuario['user_image']?>" alt="imagem do usuario">
-                <p><?php echo "Olá, ".$usuario['user_name']; ?></p>
-                <a href="/fakeinstagram/logout">Sair</a>
-                    <?php else: ?>
+                <?php if(isset($usuarios) && $usuarios != []): 
+                        foreach($usuarios as $usuario): ?>
+                            <li class="mr-3 nav-item">
+                                <p class="font-weight-bold"><?= "Olá, ".$usuario;?></p>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/fakeinsta/logout">Sair</a>
+                            </li>
+                    
+                        <?php endforeach; ?>
+                        <?php else: ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="/fakeinsta/cadastro-usuario">Cadastro</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/fakeinsta/login">Login</a>
                             </li>
-                        
+                            
                 <?php endif; ?>
+            </ul>
                 
         </nav>
 

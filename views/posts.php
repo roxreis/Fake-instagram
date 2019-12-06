@@ -2,6 +2,9 @@
 
     $posts = $_REQUEST['posts'];
 
+    var_dump($posts);
+    exit;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

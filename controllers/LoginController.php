@@ -3,7 +3,7 @@
 include_once "models/Login.php";
  
 
-class UserController{
+class LoginController{
 
     public function acao($rotas){
         switch($rotas){
@@ -11,11 +11,13 @@ class UserController{
                $this->viewLogin();
             break;
 
-            case 'logado':
+            case 'logando':
                 $this->validaLogin();
+            break;
             
             case 'logout':
                 $this->logout();
+            break;
         }
    
 
@@ -28,41 +30,44 @@ class UserController{
 
   
     private function validaLogin(){
-        $logado = new Login();
-        $usuario = $_POST['usuario'];
+        $login = new Login();
         session_start();
-        $resultado = $logado->listarUsuario($usuario);
-                
-        if ($resultado > 0) {
-            if($_POST['usuario'] == $usuario['user_name'] && password_verify($_POST['senha'], $usuario['password'])){
-                
-            $_SESSION["user_name"] = $usuario['user_name'];
-            $_SESSION["user_image"] = $usuario['user_image'];
-           
-            header('Location:posts');
-            exit; 
-
-            }else {
-                echo "Email ou senha invalido!";
-         }
+        $user = $_POST["user"];
+        $infoUsers = $login->listarUsuario($user);
+        // var_dump($user);
+        
+        // var_dump($infoUsers);
+        // exit;
+        
+        // esta recebendo dados do POST
             
-                          
-        } else {
-            echo "Email ou senha invalido!";
-
-
-       
-   }
-}
-
+        
+        //está recebendo array com os dados do banco
+                                   
+            if ($infoUsers != false){
+                foreach ($infoUsers as $orderUser) {
+                   
+                    if($_POST['user'] == $orderUser['user_name'] && password_verify($_POST['password'], $orderUser['password'])){
+                                                                                      
+                            $_SESSION['user_name'] = $orderUser['user_name'];
+                            // $_SESSION["user_image"] = $usuarioLogando["user_image"];
+        
+                            header('Location:posts');
+                    }else{
+                      echo "Nome de Usuario ou senha invalido!";
+                    }
+                }
+            }else{
+            echo "Nome de Usuario ou senha invalido!";
+            }
+ 
+               
+    }
 
     private function logout(){
-
-         
-         
+        session_start();  
         session_destroy();
-
-        include_once "views/login.php";
+        header('Location:login');    
     }
 
 }

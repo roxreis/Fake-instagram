@@ -2,7 +2,7 @@
 
     $rotas = key($_GET)?key($_GET):"posts";
 
-
+  
     switch($rotas){
         case "posts":
             include "controllers/PostController.php";
@@ -36,17 +36,19 @@
 
         case "login":
             include "controllers/LoginController.php";
-            $controller = new UserController();
+            $controller = new LoginController();
             $controller->acao($rotas);
         break;
 
-        case "logado":
+        case "logando":
             include "controllers/LoginController.php";
-            $controller = new UserController();
+            $controller = new LoginController();
             $controller->acao($rotas);
+        break;
             
         case "logout":
-            include "controller/LoginController.php";
-            $controller = new UserController();
+            include "controllers/LoginController.php";
+            $controller = new LoginController();
             $controller->acao($rotas);       
+        break;
 }

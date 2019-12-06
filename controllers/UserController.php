@@ -25,18 +25,24 @@ class UserController{
  
 
     private function cadastroUsuario(){
-        $novoUsuario = new User();
+        $newUser = new User();
         $name = $_POST['name'];
         $email = $_POST['email'];
-        $password = $_POST['password'];
-        $nomeArquivo = $_FILES['img']['name'];
+        $fileName = $_FILES['img']['name'];
         $linkTemp = $_FILES['img']['tmp_name'];
-        $caminhoSalvar = "views/img/$nomeArquivo";
-        move_uploaded_file($linkTemp, $caminhoSalvar);
+        $localSave = "views/img/$fileName";
+        move_uploaded_file($linkTemp, $localSave);
+        
+        $segurePass = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-        $resultado = $novoUsuario->criarUsuario($name, $email, $password, $caminhoSalvar);
-            if($resultado){
-                echo "Usuario Cadastrado :)!";
+
+        $result = $newUser->criarUsuario($name, $email, $segurePass, $localSave);
+
+        
+            if($result){
+
+                include ("views/cadastroSucesso.php");
+                
             }else{
                 echo "Dados inconsistentes para cadastro!";
             }

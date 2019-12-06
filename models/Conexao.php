@@ -8,6 +8,11 @@
 
     protected function criarConexao(){
         return new PDO($this->host, $this->user, $this->pass);
+
     }
 
+    
+
  }
+
+ 

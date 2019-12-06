@@ -12,14 +12,14 @@
 <?php include "views/includes/header.php"; ?>
     <main class="board d-flex flex-column justify-content-center align-items-center">
     <h1>Entrar!</h1></br>
-    <form  action="/fakeinsta/logado" method="POST">
+    <form  action="/fakeinsta/logando" method="POST">
         <div class="form group">
             <label for="name">Nome</label>
-            <input type="text" name="usuario" id="">
+            <input type="text" name="user" id="">
         </div>
         <div class="form group">
             <label for="password">Senha</label>
-            <input type="password" name="senha" id="">
+            <input type="password" name="password" id="">
         </div>
         <div class="form group">
             <button type="submit" class="btn btn-success mb-3">Login</button>
