@@ -1,10 +1,11 @@
 <?php 
-
+    session_start();
     $posts = $_REQUEST['posts'];
+    $user = isset($_SESSION["user_name"]) ? $_SESSION:[];
+    $img = isset($_SESSION["user_image"]) ? $_SESSION:[];
 
-    var_dump($posts);
-    exit;
-
+   
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,16 +21,25 @@
     
     <?php include "views/includes/header.php"; ?>
     <main class="board">
-    <?php foreach($posts as $post): ?>
-        <div class="card mt-5">
-            <img id="cardimg" src="<?php echo $post->img; ?>" alt="Card image cap">
-            <div class="card-body">
-                <p class="card-text">
-                    <?php echo $post->descricao; ?>
-                </p>
+            
+        <?php foreach($posts as $post): ?>
+            <div class="card mt-5">
+                <img id="cardimg" src="<?= $post->img; ?>" alt="Card image cap">
+                <div class="card-body">
+                    <p class="card-text">
+                        <?= $post->descricao; ?>
+                    </p >
+                    <div class="row card-text">
+                       <img class="m-1"style="width:23px; height:23px"src="<?= $img["user_image"]?>" alt="">
+                       <p class ="font-weight-bold"> <?= $user['user_name']; ?> </p>
+                       
+                    </div>
+
+                </div>
             </div>
-        </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
+     
+
         <a class="float-button" href="/fakeinsta/formulario-post">&#10010;</a>
     </main>
    

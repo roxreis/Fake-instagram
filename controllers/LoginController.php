@@ -46,12 +46,14 @@ class LoginController{
                                    
             if ($infoUsers != false){
                 foreach ($infoUsers as $orderUser) {
+                  
                    
-                    if($_POST['user'] == $orderUser['user_name'] && password_verify($_POST['password'], $orderUser['password'])){
+                    if($_POST['user'] == $orderUser['user_name'] && password_verify($_POST['password'], $orderUser['pass'])){
                                                                                       
                             $_SESSION['user_name'] = $orderUser['user_name'];
-                            // $_SESSION["user_image"] = $usuarioLogando["user_image"];
-        
+                            $_SESSION["user_image"] = $orderUser["user_image"];
+                           
+                            
                             header('Location:posts');
                     }else{
                       echo "Nome de Usuario ou senha invalido!";

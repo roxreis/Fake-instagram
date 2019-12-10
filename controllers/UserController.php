@@ -37,7 +37,7 @@ class UserController{
 
 
         $result = $newUser->criarUsuario($name, $email, $segurePass, $localSave);
-
+        
         
             if($result){
 
